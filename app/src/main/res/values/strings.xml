@@ -3,4 +3,5 @@
     <string name="new_numbers_label">From June 1, 2016</string>
     <string name="old_numbers_label">1994–2016</string>
     <string name="diplomatic_numbers_label">Diplomatic plates</string>
+    <string name="civil_new_num_label">Civil car numbers since 2016</string>
 </resources>

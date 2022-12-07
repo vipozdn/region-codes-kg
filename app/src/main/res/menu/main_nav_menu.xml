@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/new_numbers"
+        android:id="@+id/newNumbers"
         android:title="@string/new_numbers_label" />
 
     <item
-        android:id="@+id/old_numbers"
+        android:id="@+id/oldNumbers"
         android:title="@string/old_numbers_label" />
 
     <item
-        android:id="@+id/diplomatic_numbers"
+        android:id="@+id/diplomaticNumbers"
         android:title="@string/diplomatic_numbers_label" />
 
 </menu>
