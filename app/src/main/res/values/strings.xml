@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">RegionCodesKG</string>
+    <string name="new_numbers_label">From June 1, 2016</string>
+    <string name="old_numbers_label">1994–2016</string>
+    <string name="diplomatic_numbers_label">Diplomatic plates</string>
 </resources>
