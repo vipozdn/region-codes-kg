@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.lemon.regioncodeskg.databinding.ActivityMainBinding
@@ -13,7 +14,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val navController by lazy {
-        Navigation.findNavController(this, R.id.navHostFragment)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        return@lazy navHostFragment.navController
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
