@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.sp
 import com.lemon.regioncodeskg.R
 
 @Composable
-internal fun KeyboardItem(text: String) {
+internal fun KeyboardItem(text: String, colorResId: Int = R.color.black) {
     Text(modifier = Modifier.fillMaxWidth()
         .background(colorResource(id = R.color.white)),
         text = text,
@@ -21,5 +21,5 @@ internal fun KeyboardItem(text: String) {
         textAlign = TextAlign.Center,
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Bold,
-        color = colorResource(id = R.color.black))
+        color = colorResource(id = colorResId))
 }

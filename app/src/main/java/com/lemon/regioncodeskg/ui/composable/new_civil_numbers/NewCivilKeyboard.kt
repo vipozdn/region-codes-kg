@@ -3,20 +3,22 @@ package com.lemon.regioncodeskg.ui.composable.new_civil_numbers
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.Composable
 import androidx.compose.material.Text
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lemon.regioncodeskg.R
-import androidx.compose.ui.tooling.preview.Preview
 import com.lemon.regioncodeskg.ui.composable.common.KeyboardItem
+import com.lemon.regioncodeskg.ui.keyboards.KeyboardItemData
+import com.lemon.regioncodeskg.ui.keyboards.new_civil_keyboard.NewCivilKeyboardBuilder
+import com.lemon.regioncodeskg.ui.keyboards.new_civil_keyboard.NewCivilKeyboardItems
 
 @Preview
 @Composable
@@ -63,22 +65,22 @@ internal fun ContentView() {
             .wrapContentSize()
             .fillMaxWidth(),
             verticalArrangement = Arrangement.Bottom) {
-            var j = 0
-            for (i in 1..3) {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    while (j < i * 3) {
-                        j += 1
-                        Column(Modifier.weight(1f)
-                            .padding(horizontal = 20.dp, vertical = 10.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally) {
-
-                            KeyboardItem(j.toString())
-                        }
-                    }
-                }
+            Row(modifier = Modifier.fillMaxWidth()) {
+                val item1 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_1)
+                val item2 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_2)
+                val item3 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_3)
+                KeyboardItem(item1.text)
+                KeyboardItem(item2.text)
+                KeyboardItem(item3.text)
             }
         }
 
     }
 
+}
+
+private fun getKeyboardItem(id: String): KeyboardItemData {
+    return NewCivilKeyboardBuilder
+        .getKeyboardItemData(id)
+        .keyboardItemData
 }
