@@ -3,9 +3,11 @@ package com.lemon.regioncodeskg.ui.composable.new_civil_numbers
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -59,24 +61,31 @@ internal fun ContentView() {
 
         }
 
+        val shape = RoundedCornerShape(10.dp)
+
         Column(modifier = Modifier
-            .weight(1f)
             .padding(vertical = 10.dp, horizontal = 30.dp)
-            .wrapContentSize()
-            .fillMaxWidth(),
+            .fillMaxSize(),
             verticalArrangement = Arrangement.Bottom) {
-            Row(modifier = Modifier.fillMaxWidth()) {
+            Row {
                 val item1 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_1)
                 val item2 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_2)
                 val item3 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_3)
-                KeyboardItem(item1.text)
-                KeyboardItem(item2.text)
-                KeyboardItem(item3.text)
+
+                Row(modifier = Modifier.weight(1f).clip(shape)) {
+                    KeyboardItem(item1.text)
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                Row(modifier = Modifier.weight(1f).clip(shape)) {
+                    KeyboardItem(item2.text)
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                Row(modifier = Modifier.weight(1f).clip(shape)) {
+                    KeyboardItem(item3.text)
+                }
             }
         }
-
     }
-
 }
 
 private fun getKeyboardItem(id: String): KeyboardItemData {
