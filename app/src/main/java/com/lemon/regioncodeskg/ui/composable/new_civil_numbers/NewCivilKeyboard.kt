@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
@@ -33,54 +34,65 @@ internal fun ContentView() {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        Column(modifier = Modifier
-            .padding(vertical = 10.dp, horizontal = 30.dp)
-            .wrapContentHeight()
-            .width(100.dp)
-            .background(colorResource(id = R.color.white)),
-            verticalArrangement = Arrangement.Center) {
+        Column(modifier = Modifier.fillMaxWidth().weight(1f),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Text(modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                text = "01",
-                fontSize = 36.sp,
-                fontFamily = FontFamily.Default,
-                fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.black))
+            Column(modifier = Modifier
+                .padding(vertical = 10.dp, horizontal = 30.dp)
+                .wrapContentHeight()
+                .width(100.dp)
+                .background(colorResource(id = R.color.white)),
+                verticalArrangement = Arrangement.Center) {
 
-            Row(modifier = Modifier.wrapContentSize()) {
-                Image(painter = painterResource(id = R.drawable.flag_kyrgyzstan_72dp),
-                    contentDescription = "flag_kg")
-
-                Text(text = "KG",
-                    fontSize = 18.sp,
+                Text(modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center,
+                    text = "01",
+                    fontSize = 36.sp,
                     fontFamily = FontFamily.Default,
                     fontWeight = FontWeight.Bold,
                     color = colorResource(id = R.color.black))
-            }
 
+                Row(modifier = Modifier.wrapContentSize()) {
+                    Image(painter = painterResource(id = R.drawable.flag_kyrgyzstan_72dp),
+                        contentDescription = "flag_kg")
+
+                    Text(text = "KG",
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.Default,
+                        fontWeight = FontWeight.Bold,
+                        color = colorResource(id = R.color.black))
+                }
+
+            }
         }
 
         val shape = RoundedCornerShape(10.dp)
 
         Column(modifier = Modifier
             .padding(vertical = 10.dp, horizontal = 30.dp)
-            .fillMaxSize(),
+            .fillMaxWidth().weight(1f),
             verticalArrangement = Arrangement.Bottom) {
             Row {
                 val item1 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_1)
                 val item2 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_2)
                 val item3 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_3)
 
-                Row(modifier = Modifier.weight(1f).clip(shape)) {
+                Row(modifier = Modifier
+                    .weight(1f)
+                    .clip(shape)) {
                     KeyboardItem(item1.text)
                 }
                 Spacer(modifier = Modifier.width(10.dp))
-                Row(modifier = Modifier.weight(1f).clip(shape)) {
+                Row(modifier = Modifier
+                    .weight(1f)
+                    .clip(shape)) {
                     KeyboardItem(item2.text)
                 }
                 Spacer(modifier = Modifier.width(10.dp))
-                Row(modifier = Modifier.weight(1f).clip(shape)) {
+                Row(modifier = Modifier
+                    .weight(1f)
+                    .clip(shape)) {
                     KeyboardItem(item3.text)
                 }
             }
