@@ -22,19 +22,19 @@ fun KeyboardRow(ids: Triple<String, String?, String>) {
             Row(modifier = Modifier
                 .weight(1f)
                 .clip(shape)) {
-                KeyboardItem(item1.text)
+                KeyboardItem(item1.text, item1.colorResource)
             }
             Spacer(modifier = Modifier.width(10.dp))
             Row(modifier = Modifier
                 .weight(1f)
                 .clip(shape)) {
-                item2?.let { KeyboardItem(item2.text) }
+                item2?.let { KeyboardItem(item2.text, item2.colorResource) }
             }
             Spacer(modifier = Modifier.width(10.dp))
             Row(modifier = Modifier
                 .weight(1f)
                 .clip(shape)) {
-                KeyboardItem(item3.text)
+                KeyboardItem(item3.text, item3.colorResource)
             }
         }
     }
