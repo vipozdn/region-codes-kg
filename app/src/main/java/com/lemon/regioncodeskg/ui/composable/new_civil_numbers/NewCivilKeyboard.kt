@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lemon.regioncodeskg.R
 import com.lemon.regioncodeskg.ui.composable.common.KeyboardItem
+import com.lemon.regioncodeskg.ui.composable.common.KeyboardRow
 import com.lemon.regioncodeskg.ui.keyboards.KeyboardItemData
 import com.lemon.regioncodeskg.ui.keyboards.new_civil_keyboard.NewCivilKeyboardBuilder
 import com.lemon.regioncodeskg.ui.keyboards.new_civil_keyboard.NewCivilKeyboardItems
@@ -34,7 +35,9 @@ internal fun ContentView() {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        Column(modifier = Modifier.fillMaxWidth().weight(1f),
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .weight(1f),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
 
@@ -67,40 +70,38 @@ internal fun ContentView() {
             }
         }
 
-        val shape = RoundedCornerShape(10.dp)
-
         Column(modifier = Modifier
             .padding(vertical = 10.dp, horizontal = 30.dp)
-            .fillMaxWidth().weight(1f),
+            .fillMaxSize()
+            .weight(1f),
             verticalArrangement = Arrangement.Bottom) {
-            Row {
-                val item1 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_1)
-                val item2 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_2)
-                val item3 = getKeyboardItem(NewCivilKeyboardItems.NEW_CIVIL_3)
 
-                Row(modifier = Modifier
-                    .weight(1f)
-                    .clip(shape)) {
-                    KeyboardItem(item1.text)
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-                Row(modifier = Modifier
-                    .weight(1f)
-                    .clip(shape)) {
-                    KeyboardItem(item2.text)
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-                Row(modifier = Modifier
-                    .weight(1f)
-                    .clip(shape)) {
-                    KeyboardItem(item3.text)
-                }
-            }
+            KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_1,
+                NewCivilKeyboardItems.NEW_CIVIL_2,
+                NewCivilKeyboardItems.NEW_CIVIL_3))
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_4,
+                NewCivilKeyboardItems.NEW_CIVIL_5,
+                NewCivilKeyboardItems.NEW_CIVIL_6))
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_7,
+                NewCivilKeyboardItems.NEW_CIVIL_8,
+                NewCivilKeyboardItems.NEW_CIVIL_9))
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_C,
+                null,
+                NewCivilKeyboardItems.NEW_CIVIL_0))
         }
     }
 }
 
-private fun getKeyboardItem(id: String): KeyboardItemData {
+fun getKeyboardItem(id: String): KeyboardItemData {
     return NewCivilKeyboardBuilder
         .getKeyboardItemData(id)
         .keyboardItemData
