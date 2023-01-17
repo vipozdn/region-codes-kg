@@ -35,35 +35,42 @@ internal fun ContentView() {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
+        val shape = RoundedCornerShape(10.dp)
+
         Column(modifier = Modifier
-            .fillMaxWidth()
+            .wrapContentWidth()
             .weight(1f),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
 
             Column(modifier = Modifier
-                .padding(vertical = 10.dp, horizontal = 30.dp)
+                .padding(horizontal = 30.dp)
                 .wrapContentHeight()
-                .width(100.dp)
-                .background(colorResource(id = R.color.white)),
+                .width(400.dp)
+                .background(colorResource(id = R.color.white), shape = shape)
+                .clip(shape),
                 verticalArrangement = Arrangement.Center) {
 
-                Text(modifier = Modifier.fillMaxWidth(),
+                Text(modifier = Modifier.fillMaxWidth().wrapContentHeight(),
                     textAlign = TextAlign.Center,
                     text = "01",
-                    fontSize = 36.sp,
+                    fontSize = 100.sp,
                     fontFamily = FontFamily.Default,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.Medium,
                     color = colorResource(id = R.color.black))
 
-                Row(modifier = Modifier.wrapContentSize()) {
+                Row(modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically) {
+
                     Image(painter = painterResource(id = R.drawable.flag_kyrgyzstan_72dp),
                         contentDescription = "flag_kg")
 
-                    Text(text = "KG",
-                        fontSize = 18.sp,
+                    Text(modifier = Modifier.padding(horizontal = 5.dp),
+                        text = "KG",
+                        fontSize = 48.sp,
                         fontFamily = FontFamily.Default,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.Normal,
                         color = colorResource(id = R.color.black))
                 }
 
