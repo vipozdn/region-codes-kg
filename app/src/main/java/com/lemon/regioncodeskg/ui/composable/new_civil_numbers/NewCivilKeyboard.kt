@@ -18,7 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lemon.regioncodeskg.R
-import com.lemon.regioncodeskg.ui.composable.common.KeyboardItem
+import com.lemon.regioncodeskg.new_civil_numbers.UiEvent
+import com.lemon.regioncodeskg.new_civil_numbers.ViewModelState
 import com.lemon.regioncodeskg.ui.composable.common.KeyboardRow
 import com.lemon.regioncodeskg.ui.keyboards.KeyboardItemData
 import com.lemon.regioncodeskg.ui.keyboards.new_civil_keyboard.NewCivilKeyboardBuilder
@@ -27,11 +28,11 @@ import com.lemon.regioncodeskg.ui.keyboards.new_civil_keyboard.NewCivilKeyboardI
 @Preview
 @Composable
 internal fun ContentViewPreview() {
-    ContentView()
+    ContentView(ViewModelState.INITIAL) {}
 }
 
 @Composable
-internal fun ContentView() {
+internal fun ContentView(state: ViewModelState, onEvent: (UiEvent) -> Unit) {
 
     Column(modifier = Modifier.fillMaxSize()) {
 

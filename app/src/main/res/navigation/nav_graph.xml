@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newNumbers"
-        android:name="com.lemon.regioncodeskg.ui.fragments.DefineNumFragment"
+        android:name="com.lemon.regioncodeskg.new_civil_numbers.DefineNumFragment"
         android:label="@string/civil_new_num_label"
         tools:layout="@layout/fragment_define_num" />
 
