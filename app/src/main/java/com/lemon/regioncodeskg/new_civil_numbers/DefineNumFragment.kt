@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.lemon.regioncodeskg.R
-import com.lemon.regioncodeskg.ui.composable.new_civil_numbers.ContentView
+import com.lemon.regioncodeskg.new_civil_numbers.composable.ContentView
 
 class DefineNumFragment : Fragment(R.layout.fragment_define_num) {
 

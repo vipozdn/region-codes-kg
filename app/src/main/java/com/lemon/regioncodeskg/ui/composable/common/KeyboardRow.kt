@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.lemon.regioncodeskg.ui.composable.new_civil_numbers.getKeyboardItem
+import com.lemon.regioncodeskg.new_civil_numbers.composable.getKeyboardItem
 
 @Composable
 fun KeyboardRow(ids: Triple<String, String?, String>) {

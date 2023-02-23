@@ -1,4 +1,4 @@
-package com.lemon.regioncodeskg.ui.composable.new_civil_numbers
+package com.lemon.regioncodeskg.new_civil_numbers.composable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
