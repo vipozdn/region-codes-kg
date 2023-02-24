@@ -3,6 +3,7 @@ package com.lemon.regioncodeskg.new_civil_numbers.store
 import com.arkivanov.mvikotlin.core.store.SimpleBootstrapper
 import com.arkivanov.mvikotlin.core.store.Store
 import com.arkivanov.mvikotlin.core.store.StoreFactory
+import com.lemon.regioncodeskg.ui.keyboards.new_civil_keyboard.NewCivilKeyboardItems
 
 interface NewCivilStore : Store<NewCivilStore.Intent, NewCivilStore.State, NewCivilStore.News> {
 
@@ -20,13 +21,13 @@ interface NewCivilStore : Store<NewCivilStore.Intent, NewCivilStore.State, NewCi
 
 }
 
-sealed interface Effect {
-    data class DefineNumResult(val output: String) : Effect
+sealed interface Message {
+    data class DefineNumResult(val newCivilIds: List<String>) : Message
 }
 
 sealed interface Action {
     data class HandleIntent(val intent: NewCivilStore.Intent) : Action
-    object DefineNumOutput : Action
+    data class DefineNumInput(val newCivilIds: List<String>) : Action
     companion object {
         fun fromIntent(intent : NewCivilStore.Intent): Action {
             return HandleIntent(intent)
@@ -38,12 +39,19 @@ object NewCivilStoreFactory {
     fun create(storeFactory: StoreFactory) : NewCivilStore {
 
         val initialState = createInitialState()
-        val bootstrapper = SimpleBootstrapper(Action.DefineNumOutput)
+        val bootstrapper = SimpleBootstrapper(
+            Action.DefineNumInput(
+                listOf(
+                    NewCivilKeyboardItems.NEW_CIVIL_0,
+                    NewCivilKeyboardItems.NEW_CIVIL_1
+                )
+            )
+        )
         val reducer = createReducer(initialState)
         val impl = storeFactory.create(
             name = "NewCivilStore",
             initialState = initialState,
-            executorFactory = NewCivilStoreExecutor(),
+            executorFactory = ::NewCivilStoreExecutor,
             reducer = reducer,
             bootstrapper = bootstrapper)
         return object : NewCivilStore, Store<NewCivilStore.Intent, NewCivilStore.State, NewCivilStore.News> by impl
