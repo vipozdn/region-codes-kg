@@ -4,7 +4,9 @@ sealed interface UiEvent {
     data class DefineNum(val newCivilIds: List<String>) : UiEvent
 }
 
-data class ViewModelState(val regionCodeResId: Int = -1) {
+data class ViewModelState(val keyboardIds: List<String> = listOf(),
+                          val regionCodeResId: Int = -1,
+                          val typedRegionCode: String = "") {
 
     companion object {
         val INITIAL = ViewModelState()

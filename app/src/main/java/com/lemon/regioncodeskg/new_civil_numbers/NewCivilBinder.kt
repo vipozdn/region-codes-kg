@@ -5,7 +5,9 @@ import com.lemon.regioncodeskg.new_civil_numbers.store.NewCivilStore
 internal val stateToModel: NewCivilStore.State.() -> ViewModelState = {
     when (this) {
         is NewCivilStore.State.DefineNumOutput -> {
-            ViewModelState(regionCodeResId = this.outputStrResId)
+            ViewModelState(keyboardIds = this.keyboardIds,
+                regionCodeResId = this.outputStrResId,
+                typedRegionCode = this.typedRegionCode)
         }
     }
 }

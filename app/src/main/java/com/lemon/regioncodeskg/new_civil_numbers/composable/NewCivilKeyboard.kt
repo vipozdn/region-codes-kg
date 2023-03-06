@@ -1,5 +1,6 @@
 package com.lemon.regioncodeskg.new_civil_numbers.composable
 
+import android.os.Debug
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -36,6 +38,9 @@ internal fun ContentView(state: ViewModelState, onEvent: (UiEvent) -> Unit) {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
+        val regionString = with(state.regionCodeResId) {
+            if (this == -1) "" else stringResource(id = this)
+        }
         val shape = RoundedCornerShape(10.dp)
 
         Column(modifier = Modifier
@@ -52,15 +57,19 @@ internal fun ContentView(state: ViewModelState, onEvent: (UiEvent) -> Unit) {
                 .clip(shape),
                 verticalArrangement = Arrangement.Center) {
 
-                Text(modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+                Text(modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
                     textAlign = TextAlign.Center,
-                    text = "01",
+                    text = state.typedRegionCode,
                     fontSize = 100.sp,
                     fontFamily = FontFamily.Default,
                     fontWeight = FontWeight.Medium,
                     color = colorResource(id = R.color.black))
 
-                Row(modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically) {
 
@@ -76,6 +85,17 @@ internal fun ContentView(state: ViewModelState, onEvent: (UiEvent) -> Unit) {
                 }
 
             }
+
+            Text(modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight(),
+                textAlign = TextAlign.Center,
+                text = regionString,
+                fontSize = 30.sp,
+                fontFamily = FontFamily.Default,
+                fontWeight = FontWeight.Medium,
+                color = colorResource(id = R.color.white))
+
         }
 
         Column(modifier = Modifier
@@ -86,25 +106,25 @@ internal fun ContentView(state: ViewModelState, onEvent: (UiEvent) -> Unit) {
 
             KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_1,
                 NewCivilKeyboardItems.NEW_CIVIL_2,
-                NewCivilKeyboardItems.NEW_CIVIL_3))
+                NewCivilKeyboardItems.NEW_CIVIL_3), onEvent = onEvent)
 
             Spacer(modifier = Modifier.height(10.dp))
 
             KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_4,
                 NewCivilKeyboardItems.NEW_CIVIL_5,
-                NewCivilKeyboardItems.NEW_CIVIL_6))
+                NewCivilKeyboardItems.NEW_CIVIL_6), onEvent = onEvent)
 
             Spacer(modifier = Modifier.height(10.dp))
 
             KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_7,
                 NewCivilKeyboardItems.NEW_CIVIL_8,
-                NewCivilKeyboardItems.NEW_CIVIL_9))
+                NewCivilKeyboardItems.NEW_CIVIL_9), onEvent = onEvent)
 
             Spacer(modifier = Modifier.height(10.dp))
 
             KeyboardRow(ids = Triple(NewCivilKeyboardItems.NEW_CIVIL_C,
                 null,
-                NewCivilKeyboardItems.NEW_CIVIL_0))
+                NewCivilKeyboardItems.NEW_CIVIL_0), onEvent = onEvent)
         }
     }
 }

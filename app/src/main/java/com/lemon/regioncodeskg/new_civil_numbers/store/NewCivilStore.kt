@@ -12,7 +12,9 @@ interface NewCivilStore : Store<NewCivilStore.Intent, NewCivilStore.State, NewCi
     }
 
     sealed interface State {
-        data class DefineNumOutput(val outputStrResId: Int) : State
+        data class DefineNumOutput(val keyboardIds: List<String>,
+                                   val outputStrResId: Int,
+                                   val typedRegionCode: String) : State
     }
 
     sealed interface News {
@@ -62,5 +64,5 @@ object NewCivilStoreFactory {
 }
 
 private fun createInitialState(): NewCivilStore.State.DefineNumOutput {
-    return NewCivilStore.State.DefineNumOutput(-1)
+    return NewCivilStore.State.DefineNumOutput(listOf(), -1, "")
 }
