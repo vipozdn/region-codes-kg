@@ -4,4 +4,14 @@
     <string name="old_numbers_label">1994–2016</string>
     <string name="diplomatic_numbers_label">Diplomatic plates</string>
     <string name="civil_new_num_label">Civil car numbers since 2016</string>
+    <string name="error_result">Region code does not exist</string>
+    <string name="bishkek">Bishkek</string>
+    <string name="osh">Osh</string>
+    <string name="batken_region">Batken Region</string>
+    <string name="jalal_abad_region">Jalal-Abad Region</string>
+    <string name="naryn_region">Naryn Region</string>
+    <string name="osh_region">Osh Region</string>
+    <string name="talas_region">Talas Region</string>
+    <string name="chuy_region">Chüy Region</string>
+    <string name="issyk_kul_region">Issyk-Kul Region</string>
 </resources>

@@ -12,7 +12,7 @@ interface NewCivilStore : Store<NewCivilStore.Intent, NewCivilStore.State, NewCi
     }
 
     sealed interface State {
-        data class DefineNumOutput(val output: String) : State
+        data class DefineNumOutput(val outputStrResId: Int) : State
     }
 
     sealed interface News {
@@ -47,17 +47,20 @@ object NewCivilStoreFactory {
                 )
             )
         )
-        val reducer = createReducer(initialState)
+        val reducer = NewCivilReducerImpl
         val impl = storeFactory.create(
             name = "NewCivilStore",
             initialState = initialState,
             executorFactory = ::NewCivilStoreExecutor,
             reducer = reducer,
             bootstrapper = bootstrapper)
-        return object : NewCivilStore, Store<NewCivilStore.Intent, NewCivilStore.State, NewCivilStore.News> by impl
+
+        return object : NewCivilStore, Store<NewCivilStore.Intent,
+                NewCivilStore.State,
+                NewCivilStore.News> by impl {}
     }
 }
 
 private fun createInitialState(): NewCivilStore.State.DefineNumOutput {
-    return NewCivilStore.State.DefineNumOutput("")
+    return NewCivilStore.State.DefineNumOutput(-1)
 }
